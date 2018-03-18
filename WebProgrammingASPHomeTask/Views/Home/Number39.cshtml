@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Контрольная работа - Саморуков</title>
+    <style>
+        input[type='text'] {
+            width: 50px;
+            position: absolute;
+            left: 130px;
+        }
+    </style>
+    <script type="text/javascript">
+        calculate = function () {
+            var a = document.getElementById('a').value,
+                b = document.getElementById('b').value,
+                r = document.getElementById('r').value,
+                results = [];
+
+            document.getElementById('results').innerText = "Результат: ";
+
+            if (this.isArrayHasNaN([a, b, r]))
+                return;
+
+            a = Math.floor(a);
+            b = Math.floor(b);
+            r = Math.floor(r);
+
+            for (var x = -a * r; x < a * r; x++) {
+                for (var y = -b * r; y < b * r; y++) {
+                    results.push(' ( '+ x+ ' : ' + y + ' ) ');
+                }
+            }
+            for (var i = 0; i < results.length; i++) {
+                document.getElementById('results').innerText += results[i];
+            }
+        };
+
+        isArrayHasNaN = function (arguments) {
+            for (var i = 0; i < arguments.length; i++) {
+                if (isNaN(arguments[i])) {
+                    alert('This is not number: ' + arguments[i]);
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>39.	Напишите программу, которая для заданных значений a и b находит все точки с целочисленными координатами, находящиеся внутри эллипса x2/a2 + y2/b2 ≤ R 2 и выводит их координаты.</h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <div>
+        введите а:<input id="a" type="text" /><br><br>
+        введите b:<input id="b" type="text" /><br><br>
+        введите r:<input id="r" type="text" /><br><br>
+        <button onclick="calculate()">Сalculate</button><br><br>
+        <h3 id="results"></h3>
+    </div>
+</body>
+</html>

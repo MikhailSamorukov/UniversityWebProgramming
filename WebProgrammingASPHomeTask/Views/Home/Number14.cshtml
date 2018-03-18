@@ -1,0 +1,22 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Контрольная работа - Саморуков </title>
+    <script type="text/javascript">
+        onOpenNewPageClick = function () {
+            name = prompt("Введите имя пожалуйста");
+            if (!name) {
+                alert("Пустое имя");
+                return;
+            }
+            var url = '@Url.Action("GreenPage", "Home")?uname=' + name;
+            window.open(url, '_blank', 'toolbar=0,location=0,menubar=0');
+        }
+    </script>
+</head>
+<body>
+    <h1>14.	Напишите функцию, которая открыла бы окно с зеленым фоном и приветствием: «Привет, имя пользователя!» Имя пользователя можно узнать с помощью запроса. Допишите еще ссылку, которая закроет окно.</h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <button id="openPage" onclick="onOpenNewPageClick()">Открыть новое окно с приветствием</button><br><br>
+</body>
+</html>

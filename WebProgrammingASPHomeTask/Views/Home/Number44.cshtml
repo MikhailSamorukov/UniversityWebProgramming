@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Контрольная работа - Саморуков</title>
+    <style>
+        input[type='text'] {
+            width: 50px;
+        }
+    </style>
+    <script type="text/javascript">
+        calculate = function () {
+            var middleValue = 0;
+            return function () {
+                var currentValue = document.getElementById('number').value;
+                if (isNaN(currentValue))
+                    return;
+
+                middleValue = middleValue === 0 ? parseFloat(currentValue) : (middleValue + parseFloat(currentValue)) / 2;
+                document.getElementById('results').value = "";
+                document.getElementById('results').innerText = "Результат: " + middleValue;
+            }
+        }();
+
+        isArrayHasNaN = function (arguments) {
+            for (var i = 0; i < arguments.length; i++) {
+                if (isNaN(arguments[i])) {
+                    alert('This is not number: ' + arguments[i]);
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>44.	Напишите программу нахождения текущего среднего. Числа x1, x2,… последовательно поступают на вход программы. Вычислите и напечатайте арифметическое среднее всех введенных чисел. В памяти хранится только текущее число.</h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <div>
+        введите число (вводить число стоит последовательно и нажимать на Calculate):<br><br><input id="number" type="text" /><br><br>
+        <button onclick="calculate()">Сalculate</button><br><br>
+        <h3 id="results"></h3>
+    </div>
+</body>
+</html>

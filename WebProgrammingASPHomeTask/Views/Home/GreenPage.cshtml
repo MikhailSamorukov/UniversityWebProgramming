@@ -1,0 +1,31 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Контрольная работа - Саморуков </title>
+    <style>
+        body {
+        background-color:green;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var sayHello = function () {
+                var userName = location.search.split('uname=')[1];
+                document.getElementById('greet').innerText = "Привет, " + userName;
+            }
+            sayHello();
+        }
+        function closeWindow() {
+            if (confirm("Закрыть окно?")) {
+                close();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>14.	Напишите функцию, которая открыла бы окно с зеленым фоном и приветствием: «Привет, имя пользователя!» Имя пользователя можно узнать с помощью запроса. Допишите еще ссылку, которая закроет окно.</h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <h1 id="greet"></h1>
+    <a href="javascript:closeWindow();">Закрыть окно</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Контрольная работа - Саморуков </title>
+    <script type="text/javascript">
+        window.onload = function () {
+                var setTimeLabel = function () {
+                    var label = document.getElementById('timerLabel');
+                    label.innerText = "Значение таймера: " + (new Date()).toLocaleString();
+                },
+                getRandomColor = function () {
+                    var letters = '0123456789ABCDEF';
+                    var color = '#';
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                },
+                setLabelAndBodyColor = function () {
+                    document.getElementById('timerLabel').style.color = getRandomColor();
+                    document.body.style.backgroundColor = getRandomColor();
+                },
+                invokeChanges = function () {
+                    setTimeLabel();
+                    setLabelAndBodyColor();
+                };
+            setInterval(invokeChanges, 1000);
+        }
+    </script>
+</head>
+<body>
+    <h1>9.	Разработать web-страницу, отображающую текущее время в режиме постоянного обновления. Также динамически, посекундно, должен меняться цвет фона и цвет текста.</h1>
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <h3 id="timerLabel"></h3>
+</body>
+</html>

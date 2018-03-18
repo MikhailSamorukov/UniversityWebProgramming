@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Контрольная работа - Саморуков</title>
+    <style>
+        input[type='text'] {
+            width: 50px;
+            position: absolute;
+            left: 130px;
+        }
+    </style>
+    <script type="text/javascript">
+        calculate = function () {
+            var squareSide = document.getElementById('squareSide').value,
+                circleRadius = document.getElementById('circleRadius').value;
+
+            if (this.isArrayHasNaN([squareSide, circleRadius]))
+                return;
+
+            var isCircleInSquare = circleRadius <= squareSide / 2 ? true : false;
+
+            document.getElementById('results').innerText = "Результат : " + isCircleInSquare;
+        };
+
+        isArrayHasNaN = function (arguments) {
+            for (var i = 0; i < arguments.length; i++) {
+                if (isNaN(arguments[i])) {
+                    alert('This is not number: ' + arguments[i]);
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>34.	Напишите программу, которая определяет по введенным значениям длин сторон квадрата и радиуса круга верно ли утверждение "Круг вписан в квадрат". Используйте логическую переменную.</h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <div>
+        сторона квадрата:<input id="squareSide" type="text" /><br><br>
+        радиус круга:<input id="circleRadius" type="text" /><br><br>
+        <button onclick="calculate()">Сalculate</button><br><br>
+        <h3 id="results"></h3>
+    </div>
+</body>
+</html>

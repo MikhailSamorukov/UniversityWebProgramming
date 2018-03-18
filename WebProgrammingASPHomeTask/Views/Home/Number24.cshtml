@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Контрольная работа - Саморуков</title>
+    <script type="text/javascript">
+        calculate = function () {
+            var inputs = document.getElementsByTagName('input'),
+                numbers = [],
+                maxLabel = document.getElementById('maxLabel');
+
+            for (var i = 0; i < inputs.length; i++) {
+                numbers.push(inputs[i].value);
+            }
+
+            if (this.isArrayHasNaN(numbers))
+                return;
+
+            maxLabel.innerText = "Максимальное значение равно: " + getMaxOfArray(numbers);
+        };
+
+        getMaxOfArray = function (numArray) {
+             return Math.max.apply(null, numArray);
+        };
+
+        isArrayHasNaN = function (arguments) {
+            for (var i = 0; i < arguments.length; i++) {
+                if (isNaN(arguments[i])) {
+                    alert('This is not number: ' + arguments[i]);
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>24.	Найти максимальное число из трёх. </h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <div>
+        Число 1:<input type="text"/><br><br>
+        Число 2:<input type="text" /><br><br>
+        Число 3:<input type="text" /><br><br>
+        <button onclick="calculate()">Сalculate</button><br><br>
+        <h3 id="maxLabel"></h3>
+    </div>
+</body>
+</html>

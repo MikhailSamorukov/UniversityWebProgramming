@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Контрольная работа - Саморуков</title>
+    <style>
+        input[type='text'] {
+            width:50px;
+        }
+    </style>
+    <script type="text/javascript">
+        calculate = function () {
+            document.getElementById('results').innerText = "Результат : " + this.compare();
+        };
+
+        compare = function () {
+            var x = document.getElementById('x').value,
+                y = document.getElementById('y').value,
+                z = document.getElementById('z').value,
+                a = document.getElementById('a').value,
+                b = document.getElementById('b').value,
+                c = document.getElementById('c').value;
+
+            if (this.isInvalidArray())
+                return;
+
+            if (a < x)
+                return false;
+            if (b < y)
+                return false;
+            if (c < z)
+                return false;
+
+            return true;
+        },
+
+        isInvalidArray = function () {
+            var numbers = [],
+                inputs = document.getElementsByTagName('input'),
+                isArrayHasNaN = function (arguments) {
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (isNaN(arguments[i])) {
+                            alert('This is not number: ' + arguments[i]);
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+
+            for (var i = 0; i < inputs.length; i++) {
+                numbers.push(inputs[i].value);
+            }
+
+            isArrayHasNaN(numbers);
+        }
+    </script>
+</head>
+<body>
+    <h1>29.	Напишите программу, которая определяет, можно ли коробку размером поместить в ящик размером .</h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <div>
+        Коробка:<br><br>
+        x:<input id="x" type="text" /> 
+        y:<input id="y" type="text" />
+        z:<input id="z" type="text" /><br><br>
+        Ящик:<br><br>
+        a:<input id="a" type="text" />
+        b:<input id="b" type="text" />
+        c:<input id="c" type="text" /><br><br>
+        <button onclick="calculate()">Сalculate</button><br><br>
+        <h3 id="results"></h3>
+    </div>
+</body>
+</html>

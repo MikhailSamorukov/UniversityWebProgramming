@@ -1,0 +1,39 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Контрольная работа - Саморуков </title>
+    <script type="text/javascript">
+        onResultClick = function () {
+            var firstNumber = document.getElementById("firstNumberInput").value,
+                secondNumber = document.getElementById("secondNumberInput").value,
+                thirdNumber = document.getElementById("thirdNumberInput").value,
+                isAnIncreasingSequence = function () {
+                    return firstNumber < secondNumber && secondNumber< thirdNumber;
+                };
+
+            if (this.isArrayHasNaN([firstNumber, secondNumber, thirdNumber]))
+                return;
+
+            alert("Числа образуют возрастающую последовательность: " + isAnIncreasingSequence());
+        };
+
+        isArrayHasNaN = function (arguments) {
+            for (var i = 0; i < arguments.length; i++) {
+                if (isNaN(arguments[i])) {
+                    alert('This is not number: ' + arguments[i]);
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>4. Даны 3 вещественных числа. Определить, образуют ли они возрастающую последовательность</h1>
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    Введите три вещественных числа:<br><br>
+    <input type="text" id="firstNumberInput"/><br><br>
+    <input type="text" id="secondNumberInput" /><br><br>
+    <input type="text" id="thirdNumberInput" /><br><br>
+    <button id ="result" onclick="onResultClick()">Результат</button>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Контрольная работа - Саморуков</title>
+    <style>
+        input[type='text'] {
+            position: absolute;
+            left: 130px;
+        }
+    </style>
+    <script type="text/javascript">
+        var Currencies = {
+            TG: {
+                courseToTenge: 1,
+                symbol: '₸'
+            },
+            RUB: {
+                courseToTenge: 5.25,
+                symbol: '₽'
+            },
+            USD: {
+                courseToTenge: 325.75,
+                symbol: '$'
+            },
+            EUR: {
+                courseToTenge: 405.89,
+                symbol: '€'
+            }
+        };
+
+        window.onload = function () {
+            convert();
+        };
+
+        convert = function () {
+            var inputs = document.getElementsByTagName('input');
+            tengeValue = document.getElementById('tengeInput').value.replace("₸", "");
+        
+            if (!tengeValue || isNaN(tengeValue))
+                tengeValue = 0;
+
+            for (var i = 0; i < inputs.length; i++) {
+                var currency = inputs[i].getAttribute("currencyName");
+
+                if (!Currencies[currency])
+                    continue;
+
+                inputs[i].value = Currencies[currency].courseToTenge ?
+                    Currencies[currency].symbol + (tengeValue / Currencies[currency].courseToTenge).toFixed(2) :
+                    Currencies[currency].symbol + (tengeValue).toFixed(2);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>19.	Напишите программу на JavaScript: конвертор валют. Предусмотреть не менее 4-х видов валют. Рядом с названием валюты должно выводится ее изображение. </h1>
+
+    Назад: @Html.ActionLink("Home", "Index")<br><br>
+    <div>
+        Тенге:<input type="text" id="tengeInput" currencyName ="TG"/><br><br>
+        Рубли: <input type="text" id="rublInput" currencyName="RUB" disabled/><br><br>
+        Доллары: <input type="text" id="dollarInput" currencyName="USD" disabled/><br><br>
+        Евро: <input type="text" id="euroInput" currencyName="EUR" disabled/><br><br>
+        <button onclick="convert()">Convert</button>
+    </div>
+</body>
+</html>
