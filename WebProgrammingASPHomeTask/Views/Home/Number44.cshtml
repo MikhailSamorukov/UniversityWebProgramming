@@ -16,6 +16,7 @@
                 if (isNaN(currentValue))
                     return;
 
+                document.getElementById('allValues').innerText += " " + currentValue + ",";
                 middleValue = middleValue === 0 ? parseFloat(currentValue) : (middleValue + parseFloat(currentValue)) / 2;
                 document.getElementById('results').value = "";
                 document.getElementById('results').innerText = "Результат: " + middleValue;
@@ -40,6 +41,7 @@
     <div>
         введите число (вводить число стоит последовательно и нажимать на Calculate):<br><br><input id="number" type="text" /><br><br>
         <button onclick="calculate()">Сalculate</button><br><br>
+        <h3 id="allValues">Все введенные значения: </h3>
         <h3 id="results"></h3>
     </div>
 </body>

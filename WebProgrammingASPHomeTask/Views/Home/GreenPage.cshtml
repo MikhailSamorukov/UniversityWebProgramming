@@ -9,7 +9,7 @@
     <script type="text/javascript">
         window.onload = function () {
             var sayHello = function () {
-                var userName = location.search.split('uname=')[1];
+                var userName = decodeURIComponent(location.search.split('uname=')[1]);
                 document.getElementById('greet').innerText = "Привет, " + userName;
             }
             sayHello();
